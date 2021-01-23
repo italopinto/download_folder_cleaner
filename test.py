@@ -3,17 +3,18 @@ import shutil
 import sys
 from pytube import YouTube
 
+#the directory source (SRC) and destination (DST)
 SRC = '/home/italo/Pictures'
 DST = '/home/italo/Downloads'
 
 
 def menu():
-    print('Teste do Watchdog com o diretorio Downloads:')
-    print('[1] Mover arquivo.')
-    print('[2] Deletar arquivo.')
-    print('[3] Baixar vídeo do YouTube')
-    print('[4] Sair.')
-    option = input('Opção: ')
+    print('Test of the folder_cleaner on Downloads directory:')
+    print('[1] Move file.')
+    print('[2] Delete file.')
+    print('[3] Download a video from YouTube')
+    print('[4] Exit.')
+    option = input('Option: ')
 
     if option == '1':
         move_file()
@@ -35,35 +36,29 @@ def move_file():
     os.chdir(SRC)
     if not os.path.exists(DST + '/ass.png'):
         shutil.copy2(SRC + '/ass.png', DST)
-        print('Arquivo copiado com sucesso!')
+        print('File moved succesfuly!')
     else:
-        print('Arquivo já existe.')
+        print('File already exists.')
 
 
 def delete_file():
     os.chdir(DST)
     if not os.path.exists('ass.png'):
-        print('Arquivo já não está mais aqui.')
+        print('File no long here.')
     else:
         os.remove('ass.png')
-        print('Arquivo deletado com sucesso!')
+        print('File deleted succesfuly!')
 
 
 def download_from_youtube():
-    video = input('Cole aqui a URL do vídeo do YouTube: ')
+    video = input('Paste here the vídeo URL from YouTube: ')
     yt = YouTube(video)
     try:
         yt.streams.filter(progressive=True).first().download(DST)
-        print('Download efetuado com sucesso!')
+        print('Downloaded succesfuly!')
     except:
-        print('Deu merda!')
+        print('Something went wrong!')
 
 
 if __name__ == '__main__':
     menu()
-
-
-'''import os
-os.chdir('/home/italo/Downloads')
-print(os.path.getsize('Questão.de.Honra.Xivd.Dvdrip.[Dublado].avi')/1000000)
-print(type(os.path.getsize('Questão.de.Honra.Xivd.Dvdrip.[Dublado].avi')))'''
