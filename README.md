@@ -1,23 +1,7 @@
-# Bem vindo ao repositório da [Dev Aprender](https://www.devaprender.com)!
+# Scripts em python para automatizar a "limpeza" do diretório de downloads do Ubuntu Linux 20.10
 
-Descubra como o poder da programação pode **mudar seu o futuro** e a **sua vida!**
+* **Créditos:** Ao Jhonatan da [Dev Aprender](https://www.devaprender.com), autor desse projeto.
 
-Redes Sociais:
-* [Youtube](https://www.youtube.com/devaprender.com)
-* [Site](www.devaprender.com)
-* [Instagram](https://www.instagram.com/devaprender.official/)
-* [Facebook](facebook.com/devaprender/)
-
----
-
-# Imagine se você pudesse:
-
-* **Criar robôs** que trabalham por você?
-* **Usar** a programação ao seu favor?
-* **Economizar** dezenas de horas?
-* **Monetizar** seu conhecimento?
-
-Vou te ensinar tudo isso [neste curso](http://b.link/GitHub_curso_automacao), saiba mais [clicando aqui](http://b.link/GitHub_curso_automacao).
-
----
-# Repositório baseado em [vídeo no canal](https://youtu.be/Nnj6-NtJXUc)
+# Projeto
+* O projeto consiste em automatizar a organização do diretório Downloads, inicialmente, foi feito para windows, pelo autor original. Meu fork foi para adaptar os scripts ao meu Ubuntu Linux 20.10.
+* Não foram feitas grandes modificações, tive que mudar apenas os caminhos para o diretório, pois o sistema de arquivos das distribuições linux, são diferentes do windows.
