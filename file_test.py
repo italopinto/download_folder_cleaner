@@ -34,8 +34,8 @@ def menu():
 
 def move_file():
     os.chdir(SRC)
-    if not os.path.exists(DST + '/ass.png'):
-        shutil.copy2(SRC + '/ass.png', DST)
+    if not os.path.exists(DST + '/<some>.<extension>'):
+        shutil.copy2(SRC + '//<some>.<extension>', DST)
         print('File moved succesfuly!')
     else:
         print('File already exists.')
@@ -43,10 +43,10 @@ def move_file():
 
 def delete_file():
     os.chdir(DST)
-    if not os.path.exists('ass.png'):
+    if not os.path.exists('/<some>.<extension>'):
         print('File no long here.')
     else:
-        os.remove('ass.png')
+        os.remove('/<some>.<extension>')
         print('File deleted succesfuly!')
 
 
