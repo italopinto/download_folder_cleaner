@@ -1,19 +1,11 @@
-import logging
 import shutil
 import os
+import logging
 
 
-def extension_type(event):
-    try:
-        return event.src_path[event.src_path.rindex('.') + 1:]
-    except:
-        return logging.info(f'File {str(event.src_path)} doesn\'t have extension!')
-
-
-def is_text_file(event):
-    if extension_type(event) == 'txt':
-        return True
-    return False
+# Indentifiers for the extension_type of the archives
+def extension_type(event):   
+    return event.src_path[event.src_path.rindex('.') + 1:]   
 
 
 def is_pdf_file(event):
@@ -35,7 +27,7 @@ def is_image_file(event):
 
 
 def is_video_file(event):
-    if extension_type(event) in ('mp4', 'avi', 'mvk'):
+    if extension_type(event) in ('mp4', 'avi'):
         return True
     return False
 
@@ -47,7 +39,13 @@ def is_doc_file(event):
 
 
 def is_spreadsheet_file(event):
-    if extension_type(event) in ('xls', 'xlsx'):
+    if extension_type(event) in ('xls', 'xlsx', 'ods'):
+        return True
+    return False
+
+
+def is_csv_file(event):
+    if extension_type(event) in ('csv'):
         return True
     return False
 
@@ -59,7 +57,7 @@ def is_presentation_file(event):
 
 
 def is_code_file(event):
-    if extension_type(event) in ('py', 'cs', 'js', 'php', 'html', 'sql', 'css', 'c'):
+    if extension_type(event) in ('py', 'cpp', 'js', 'php', 'html', 'sql', 'css', 'c'):
         return True
     return False
 
@@ -70,16 +68,8 @@ def is_executable_file(event):
     return False
 
 
-def is_zip_file(event):
-    if extension_type(event) in ('zip', 'gz'):
-        return True
-    return False
-
-
 def make_folder(foldername):
-    # os.chdir('/home/italo/Downloads')
     if os.path.exists(foldername):
-        logging.info('Folder already exists, skipping creation')
         return os.getcwd() + os.sep + str(foldername)
     else:
         os.mkdir(str(foldername))
@@ -89,7 +79,7 @@ def make_folder(foldername):
 def move_to_new_corresponding_folder(event, path_to_new_folder):
     try:
         shutil.move(event.src_path, path_to_new_folder)
-        logging.info('moving file')
     except:
-        logging.info('File already existed in target folder')
-        pass
+        logging.warning(
+            f'Can\'t complete the move operation for {event.src_path}, already exists.')
+        return
